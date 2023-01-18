@@ -21,7 +21,10 @@ function newGallery(images) {
 
 function onLinkImageClick(evt) {
     evt.preventDefault();
-    let lightbox = new SimpleLightbox('.gallery a');
+    let lightbox = new SimpleLightbox('.gallery a', {
+        captionsData: 'alt',
+        captionDelay: 250,
+    });
     
     lightbox.open();
     
