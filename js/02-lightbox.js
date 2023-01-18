@@ -5,33 +5,26 @@ import { galleryItems } from "./gallery-items.js";
 const galleryEl = document.querySelector(".gallery");
 
 galleryEl.insertAdjacentHTML('beforeend', newGallery(galleryItems));
-galleryEl.addEventListener("click", onLinkImageClick);
+
 
 function newGallery(images) {
   return images.map(({ preview, original, description }) => {
-      return `<div class="gallery__item">
-                    <a class="gallery__item" href="${original}">
-                        <img class="gallery__image" 
-                             src="${preview}" 
-                             alt="${description}" />
-                    </a>
-            </div>`
+      return `<a class="gallery__item" href="${original}">
+                <img class="gallery__image" 
+                     src="${preview}" 
+                     alt="${description}" />
+            </a>`
   }).join('')
+    
 }
+// console.log(galleryEl);
 
-function onLinkImageClick(evt) {
-    evt.preventDefault();
+
     let lightbox = new SimpleLightbox('.gallery a', {
         captionsData: 'alt',
         captionDelay: 250,
+        scrollZoom: false,
     });
     
-    lightbox.open();
     
-};
-
-// new SimpleLightbox('.gallery a', {
-//     captionsData: 'alt',
-//     captionDelay: 250,
-//     captionPosition:'bottom',
-// });
+console.log(lightbox);
